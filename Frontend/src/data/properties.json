@@ -1,0 +1,49 @@
+[
+  {
+    "Id": 1,
+    "SellRent":1,
+    "Name": "Prince Villa",
+    "Type": "House",
+    "Price": 12000,
+    "Image":"prop-1"
+  },
+  {
+    "Id": 2,
+    "SellRent":2,
+    "Name": "Sohail Villa",
+    "Type": "House",
+    "Price": 18000,
+    "Image":"prop-2"
+  },
+  {
+    "Id": 3,
+    "SellRent":1,
+    "Name": "Faizan Villa",
+    "Type": "House",
+    "Price": 18000,
+    "Image":"prop-3"
+  },
+  {
+    "Id": 4,
+    "SellRent":1,
+    "Name": "Zeeshan Villa",
+    "Type": "House",
+    "Price": 18000,
+    "Image":"prop-4"
+  },
+  {
+    "Id": 5,
+    "SellRent":1,
+    "Name": "Shoaib Villa",
+    "Type": "House",
+    "Price": 18000,
+    "Image":"prop-5"
+  },
+  {
+    "Id": 6,
+    "SellRent":2,
+    "Name": "Ameen Villa",
+    "Type": "House",
+    "Price": 18000
+  }
+]
