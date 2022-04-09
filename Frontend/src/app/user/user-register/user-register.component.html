@@ -1,44 +1,71 @@
 <div class="row">
   <div class="col-6 m-auto">
-  <div class="card m-auto">
-    <div class="card-header">
-      Register
-    </div>
-    <div class="card-body">
-      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-        <div class="form-group col-12">
+    <div class="card m-auto">
+      <div class="card-header">
+        Register
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group col-12">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="userName">
-        </div>
+            <span *ngIf="!userName.valid && userName.touched" class="error-block">
+              Please provid name
+            </span>
+          </div>
 
-        <div class="form-group col-12">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" formControlName="email">
-        </div>
+          <div class="form-group col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="email">
+            <span *ngIf="!email.valid && email.touched" class="error-block">
+              <span *ngIf="email.hasError('required')">
+                Please provid email ID
+              </span>
+              <span *ngIf="email.hasError('email')">
+                Please provid valid email ID
+              </span>
+            </span>
+          </div>
 
-        <div class="form-group col-12">
-          <label for="passwrod" class="form-label">Password</label>
-          <input type="password" class="form-control" formControlName="password">
-        </div>
+          <div class="form-group col-12">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+            <span *ngIf="!password.valid && password.touched" class="error-block">
+              <span *ngIf="email.hasError('required')">
+                Please provid password
+              </span>
+              <span *ngIf="password.hasError('minLength')">
+                Please atleast 8 charachter long
+              </span>
+            </span>
+          </div>
 
-        <div class="form-group col-12">
-          <label for="cpassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" formControlName="confirmPassword">
-        </div>
+          <div class="form-group col-12">
+            <label for="cpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword">
+            <span *ngIf="!confirmPassword.valid && confirmPassword.touched" class="error-block">
+              <span *ngIf="confirmPassword.hasError('required')">
+                Please confirm password
+              </span>
+              <span *ngIf="registrationForm.hasError('notMatched')">
+                Password should have atleat 8 charachtar
+              </span>
+            </span>
+          </div>
 
-        <div class="form-group col-12">
-          <label for="mobile" class="form-label">Mobile</label>
-          <input type="text" class="form-control" formControlName="mobile">
-        </div>
-        <br>
-        <div class="form-group col-12">
-          <button type="submit" class="btn btn-success m-2">Save</button>
-          <button type="reset" class="btn btn-danger">Cancel</button>
-        </div>
-        Form Values:{{registrationForm.value | json}}<br/>
-        Form Status:{{registrationForm.valid}}
-      </form>
+          <div class="form-group col-12">
+            <label for="mobile" class="form-label">Mobile</label>
+            <input type="text" class="form-control" formControlName="mobile">
+          </div>
+          <br>
+          <div class="form-group col-12">
+            <button type="submit" class="btn btn-success m-2">Save</button>
+            <button type="reset" class="btn btn-danger">Cancel</button>
+          </div>
+          Form Values:{{registrationForm.value | json}}<br />
+          Form Status:{{registrationForm.valid}}
+        </form>
+      </div>
     </div>
-  </div>
   </div>
 </div>
