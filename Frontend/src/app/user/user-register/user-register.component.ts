@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { UserServiceService } from 'src/app/services/user-service.service';
+import { AltertyfyService } from 'src/app/services/altertyfy.service';
 
 @Component({
   selector: 'app-user-register',
@@ -9,7 +12,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class UserRegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
-  constructor() { }
+  user:User;
+  userSubmitted:boolean;
+
+  constructor( private fb:FormBuilder,
+               private userService:UserServiceService,
+               private alertify:AltertyfyService) { }
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
@@ -19,7 +27,21 @@ export class UserRegisterComponent implements OnInit {
       confirmPassword: new FormControl(null,[Validators.required , Validators.minLength(8)]),
       mobile: new  FormControl(null,[Validators.required , Validators.maxLength(10)])
     }, this.passwordMatchingValidator);
+//    this.creatngRegistrationForm();
   }
+
+  // creatngRegistrationForm(){
+  //   this.registrationForm = this.fb.group([{
+  //     userName:[null, Validators.required],
+  //     email:[null, Validators.required,Validators.email],
+  //     password:[null, Validators.required,Validators.minLength(8)],
+  //     confirmPassword:[null, Validators.required,],
+  //     mobile:[null, Validators.required,Validators.maxLength(10)]
+  //   },{Validators:this.passwordMatchingValidator}]);
+  // }
+
+
+
   passwordMatchingValidator(fg:FormGroup): Validators{
     return fg.get('password').value === fg.get('confirmPassword').value ? null :
     {notMatched:true}
@@ -43,6 +65,25 @@ export class UserRegisterComponent implements OnInit {
     return this.registrationForm.get('mobile') as FormControl;
   }
   onSubmit(){
-    console.log(this.registrationForm);
+
+    console.log(this.registrationForm.value);
+    this.userSubmitted=true;
+    if(this.registrationForm.valid){
+     // this.user=Object.assign(this.user, this.registrationForm.value);
+      this.userService.addUser(this.userData());
+      this.registrationForm.reset();
+      this.userSubmitted=false;
+      this.alertify.success('Congrats, you are successfully registered');
+    }else{
+      this.alertify.error('Kindly provid details');
+    }
+  }
+  userData(): User {
+    return this.user={
+      userName: this.userName.value,
+      email: this.email.value,
+      password: this.password.value,
+      mobile: this.mobile.value
+    }
   }
 }
