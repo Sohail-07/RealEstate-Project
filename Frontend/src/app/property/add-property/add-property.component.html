@@ -1,4 +1,4 @@
-<div class="row mb-5">
+<div class="row mb-2">
   <div class="col-8 shadow-lg p-0 bg-white">
     <div class="card">
       <div class="card-header">
@@ -11,32 +11,32 @@
               <tab heading="Basic info" ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup">
 
                 <div class="form-group col-12">
-                  <p>I want to</p>
-                  <div class="btn-group" btnRadioGroup ngModel name="SellRent" required>
+                  <label> I want to</label><br>
+                  <div class="btn-group mb-1" btnRadioGroup ngModel name="SellRent" required>
                     <label class="btn btn-outline-primary m-1" btnRadio="1" role="button" name="SellRent">Sell</label>
                     <label class="btn btn-outline-primary m-1" btnRadio="2" role="button" name="SellRent">Rent</label>
                   </div>
                 </div>
 
                 <div class="form-group col-12">
-                  <p>BHK</p>
-                  <div class="btn-group" btnRadioGroup name="numberofRooms" [(ngModel)]="propertyView.BHK">
+                  <label>BHK</label><br>
+                  <div class="btn-group mb-1" btnRadioGroup name="numberofRooms" [(ngModel)]="propertyView.BHK">
                     <label *ngFor="let bhk of numberofRoom" class="btn btn-outline-primary m-1" [btnRadio]="bhk"
                       tabindex="0" role="button" name="SellRent">{{bhk}}</label>
                   </div>
                 </div>
 
                 <div class="form-group col-12">
-                  <p>Property Type</p>
-                  <div class="btn-group" btnRadioGroup name="propType" [(ngModel)]="propertyView.PType">
+                  <label>Property Type</label><br>
+                  <div class="btn-group mb-1" btnRadioGroup name="propType" [(ngModel)]="propertyView.PType">
                     <label *ngFor="let ptype of propertyType" class="btn btn-outline-primary m-1" [btnRadio]="ptype"
                       tabindex="0" role="button" name="SellRent">{{ptype}}</label>
                   </div>
                 </div>
 
                 <div class="form-group col-12">
-                  <p>Furnishing Type</p>
-                  <div class="btn-group" btnRadioGroup name="furnishingType" [(ngModel)]="propertyView.FType">
+                  <label>Furnishing Type</label><br>
+                  <div class="btn-group mb-1" btnRadioGroup name="furnishingType" [(ngModel)]="propertyView.FType">
                     <label *ngFor="let ftype of furnishType" class="btn btn-outline-primary m-1" [btnRadio]="ftype"
                       tabindex="0" role="button" name="SellRent">{{ftype}}</label>
                   </div>
@@ -44,7 +44,7 @@
 
                 <div class="form-group col-12">
                   <label for="name">in Building/Socity/Project</label>
-                  <input type="text" class="form-control" #propName="ngModel" ngModel name="propName" required
+                  <input type="text" class="form-control mb-1" #propName="ngModel" ngModel name="propName" required
                     minlength="5" [(ngModel)]="propertyView.Name">
                   <span *ngIf="!propName.valid && propName.touched" class="error-block">
                     <span *ngIf="propName.errors['required']">Please provid valid name</span>
@@ -56,7 +56,7 @@
                   <label for="city">City</label>
                   <input type="text" class="form-control" name="city" [(ngModel)]="propertyView.City">
                 </div><br>
-                <div class="d-grid gap-2">
+                <div class="d-grid">
                   <button class="btn btn-primary" type="button" (click)="selectTab(1)" [disabled]="!BasicInfo.valid">Next</button>
                 </div>
               </tab>
@@ -120,7 +120,7 @@
               </tab>
               <tab heading="Other Details">
                 <div class="form-group col-12">
-                  <p>Ready to move</p>
+                  <label>Ready to move<br> move</label>
                   <div class="btn-group" btnRadioGroup>
                     <label class="btn btn-outline-primary m-1" btnRadio="1" role="button" name="">Yes</label>
                     <label class="btn btn-outline-primary m-1" btnRadio="2" role="button" name="">No</label>
@@ -139,7 +139,7 @@
                 </div>
 
                 <div class="form-group col-12">
-                  <p>Gated Community</p>
+                  <label> Gated community</label><br>
                   <div class="btn-group" btnRadioGroup>
                     <label class="btn btn-outline-primary m-1" btnRadio="1" role="button" name="">Yes</label>
                     <label class="btn btn-outline-primary m-1" btnRadio="2" role="button" name="">No</label>
@@ -147,7 +147,7 @@
                 </div>
 
                 <div class="form-group col-12">
-                  <p>Main Entrence</p>
+                  <label>Main Entrance</label><br>
                   <div class="btn-group" btnRadioGroup>
                     <label *ngFor="let entry of mainEntrence" class="btn btn-outline-primary m-1" [btnRadio]="entry"
                       tabindex="0" role="button" name="SellRent">{{entry}}</label>
