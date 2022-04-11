@@ -19,6 +19,6 @@ export class NavBarComponent implements OnInit {
   }
   onLogout(){
     localStorage.removeItem('token');
-    this.alertify.warning('You are successfully logged out!')
+    this.alertify.warning('You are successfully logged out!~')
   }
 }
