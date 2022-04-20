@@ -1,0 +1,13 @@
+<div class="header">
+  <h2 mat-dialog-title>Logout</h2>
+  <button mat-icon-button [mat-dialog-close]="false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  are you sure? want's to logout?
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button [mat-dialog-close]="false">No</button>
+  <button (click)="onLogout()" mat-raised-button color="primary" [mat-dialog-close]="true">Yes</button>
+</div>

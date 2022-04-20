@@ -22,7 +22,11 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserServiceService } from './services/user-service.service';
 import { AltertyfyService } from './services/altertyfy.service';
 import { AuthService } from './services/auth.service';
-
+import { MatDialogModule} from '@angular/material/dialog'
+import { MatIconModule} from '@angular/material/icon'
+import { MatButtonModule} from '@angular/material/button'
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { ConfirmComponent } from './dialogs/confirm/confirm.component'
 
 const appRoutes: Routes = [
   {path: '', component: PropertyListComponent},
@@ -43,13 +47,18 @@ const appRoutes: Routes = [
     AddPropertyComponent,
     PropertyDetailComponent,
     UserRegisterComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    ConfirmComponent
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
