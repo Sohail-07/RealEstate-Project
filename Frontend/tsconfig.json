@@ -6,7 +6,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    // "strict": true,
+    //"strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -18,7 +18,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
-    "typeRoots": ["src/altertyfytype.d.ts"],
+    "typeRoots": ["node_modules/@types","src/altertyfytype.d.ts"],
     "module": "es2020",
     "lib": [
       "es2020",
@@ -27,6 +27,7 @@
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
+    "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
