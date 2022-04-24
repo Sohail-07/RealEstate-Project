@@ -12,6 +12,7 @@ export class PropertyListComponent implements OnInit {
 
   SellRent = 1;
   properties: IPropertyBase[];
+  today= new Date();
 
   constructor(private route:ActivatedRoute, private housingService: HousingService) {}
 
