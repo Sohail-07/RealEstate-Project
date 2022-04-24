@@ -204,10 +204,9 @@ export class AddPropertyComponent implements OnInit {
       this.alertify.success('Congrats your form submitted.');
       console.log(this.addPropertyForm);
 
-      if(this.SellRent.value ==='2'){
-        this.router.navigate(['/rent-property'])
-      }
-      else{
+      if (this.SellRent.value === '2') {
+        this.router.navigate(['/rent-property']);
+      } else {
         this.router.navigate(['/']);
       }
     } else {
