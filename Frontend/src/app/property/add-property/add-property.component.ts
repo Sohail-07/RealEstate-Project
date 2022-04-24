@@ -40,12 +40,11 @@ export class AddPropertyComponent implements OnInit {
     RTM: null,
   };
 
-
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private alertify: AltertyfyService,
-    private housingService:HousingService
+    private housingService: HousingService
   ) {}
 
   ngOnInit() {
@@ -201,9 +200,16 @@ export class AddPropertyComponent implements OnInit {
     this.nextClicked = true;
     if (this.allTabsValid()) {
       this.mapProperty();
-      this.housingService.addProperty(this.property)
+      this.housingService.addProperty(this.property);
       this.alertify.success('Congrats your form submitted.');
       console.log(this.addPropertyForm);
+
+      if(this.SellRent.value ==='2'){
+        this.router.navigate(['/rent-property'])
+      }
+      else{
+        this.router.navigate(['/']);
+      }
     } else {
       this.alertify.error('Please review the form and provide all valid');
     }
@@ -233,7 +239,6 @@ export class AddPropertyComponent implements OnInit {
     this.property.Description = this.Description.value;
     this.property.PostedOn = new Date().toString();
   }
-
   allTabsValid(): boolean {
     if (this.BasicInfo.invalid) {
       this.formTabs.tabs[0].active = true;
