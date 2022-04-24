@@ -213,7 +213,6 @@ export class AddPropertyComponent implements OnInit {
       this.alertify.error('Please review the form and provide all valid');
     }
   }
-
   mapProperty(): void {
     this.property.Id = this.housingService.newPropID();
     this.property.SellRent = +this.SellRent.value;
