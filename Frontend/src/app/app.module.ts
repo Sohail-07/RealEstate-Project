@@ -28,6 +28,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ConfirmComponent } from './dialogs/confirm/confirm.component';
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './Pipes/filter.pipe';
+import { SortPipe } from './Pipes/sort.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: PropertyListComponent },
@@ -54,6 +56,8 @@ const appRoutes: Routes = [
     UserRegisterComponent,
     UserLoginComponent,
     ConfirmComponent,
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,

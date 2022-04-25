@@ -1,6 +1,19 @@
-Current Date:{{today | date:'fullDate'}}
+Current Date:{{today | date:'fullDate'}}<br>
+<label> Filter City:</label>
+<input [(ngModel)]='city'>
+<button type="button" (click)="onCityFilter()">Search</button>
+<button type="button" (click)="onCityFilterClear()">Clear</button> &nbsp;
+<label> Sort by &nbsp;</label>
+<select [(ngModel)]="sortByParam">
+  <option value="City">City</option>
+  <option value="Price">Price</option>
+</select>
+<button type="button" (click)="onSortDirection()">
+  <i *ngIf="sortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
+  <i *ngIf="sortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
+</button>
 <div class="row">
-  <div *ngFor="let property of properties" class="shadow-lg col-md-4 p-2">
+  <div *ngFor="let property of properties|filter:searchCity:'City'|sort:[sortByParam,sortDirection]" class="shadow-lg col-md-4 p-2">
     <aap-property-card [property]="property"></aap-property-card>
   </div>
 </div>
