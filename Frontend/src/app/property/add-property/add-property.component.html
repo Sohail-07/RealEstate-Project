@@ -86,9 +86,16 @@
 
                 <div class="form-group col-12">
                   <label for="city">City</label>
-                  <input type="text" class="form-control"
+                  <select
+                  class="form-select"
                   formControlName="City"
-                  [(ngModel)]="propertyView.City">
+                  [(ngModel)]="propertyView.City" placeholder="--Select City--">
+                  <option value=''>--Select City--</option>
+                  <option *ngFor="let city of cityList"
+                  value={{city}}>
+                    {{city}}
+                  </option>
+                  </select>
                   <div class="error-block"
                   *ngIf="City.invalid && (nextClicked || City.touched)">
                     Please select city
@@ -243,7 +250,7 @@
       </div>
     </div>
   </div>
-  <div class="col-4">
+  <div class="col-4  p-2">
     <div class="card-header">
       <h3>Your Property Privew</h3>
     </div>
