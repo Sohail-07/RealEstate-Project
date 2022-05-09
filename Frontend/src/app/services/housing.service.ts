@@ -11,17 +11,17 @@ import { Property } from '../model/property';
 export class HousingService {
   constructor(private http: HttpClient) {}
 
-  getAllCities(): Observable<string[]>{
+  getAllCities(): Observable<string[]> {
     return this.http.get<string[]>('http://localhost:5000/api/city');
   }
 
   getProperty(id: number) {
     return this.getAllProperties().pipe(
-      map(properiesArray => {
+      map((properiesArray) => {
         //throw new Error('Some error');
-        return properiesArray.find(p => p.Id === id);
+        return properiesArray.find((p) => p.Id === id);
       })
-    )
+    );
   }
 
   getAllProperties(SellRent?: number): Observable<Property[]> {
