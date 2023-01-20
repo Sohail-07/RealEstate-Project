@@ -26,14 +26,14 @@
                   <div class="btn-group" btnRadioGroup
                   formControlName="BHK"
                   name="BHK">
-                    <label
+                    <!-- <label
                       *ngFor="let bhk of [1,2,3,4]"
                       class="btn btn-outline-primary m-1"
                       [btnRadio]="bhk" tabindex="0" role="button"
                       (click)="propertyView.BHK=bhk"
                       name="BHK">
                       {{bhk}}
-                    </label>
+                    </label> -->
                   </div>
                   <div class="error-block" *ngIf="BHK.invalid && nextClicked">
                     Please select BHK
