@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
+using WebAPI.Dtos;
 using WebAPI.Interfaces;
 using WebAPI.Models;
 
@@ -21,15 +24,25 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetCities()
         {
             var cities = await uow.CityReposetory.GetCitiesAsync();
-            return Ok(cities);
+            var citiesDto = from c in cities
+                            select new CityDto
+                            {
+                                Id = c.Id,
+                                Name = c.Name
+                            };
+            return Ok(citiesDto);
         }
          
         //Post the data in Json format
         [HttpPost("post")]
-        public async Task<IActionResult> AddCities(City city)
+        public async Task<IActionResult> AddCity(CityDto cityDto)
         {
-
-           uow.CityReposetory.AddCity(city);
+            var city = new City { 
+                Name = cityDto.Name,
+                LastUpdatedBy = 1,
+                LastUpdatedOn = DateTime.Now
+            };
+            uow.CityReposetory.AddCity(city);
             await uow.SaveAsync();
             return StatusCode(201);
         }
