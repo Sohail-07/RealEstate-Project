@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
@@ -11,6 +12,7 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
+    [Authorize]
     public class CityController : BaseController
     {
         private readonly IUnitOfWork uow;
@@ -22,11 +24,11 @@ namespace WebAPI.Controllers
             this.mapper = mapper;
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetCities()
         {
-            throw new UnauthorizedAccessException();
+            //throw new UnauthorizedAccessException();
             var cities = await uow.CityReposetory.GetCitiesAsync();
             var citiesDto = mapper.Map<IEnumerable<CityDto>>(cities);
             return Ok(citiesDto);
@@ -56,7 +58,7 @@ namespace WebAPI.Controllers
             cityFromDb.LastUpdatedOn = DateTime.Now;
             mapper.Map(cityDto, cityFromDb);
 
-            throw new Exception("Some unkown error occured");
+            //throw new Exception("Some unkown error occured");
             await uow.SaveAsync();
             return StatusCode(200);
         }
