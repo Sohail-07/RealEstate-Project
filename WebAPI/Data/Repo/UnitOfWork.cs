@@ -15,6 +15,9 @@ namespace WebAPI.Interfaces
         public ICityReposetory CityReposetory =>
             new CityReposetory(dc);
 
+        public IUserReposetory UserReposetory => 
+            new UserReposetory(dc); 
+
         public async Task<bool> SaveAsync()
         {
             return await dc.SaveChangesAsync() > 0;
