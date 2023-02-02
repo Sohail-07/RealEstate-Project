@@ -38,8 +38,19 @@ namespace WebAPI.Controllers
             loginRes.Token = CreateJWT(user);
             return Ok(loginRes);
         }
-    
-        private string CreateJWT(User user)
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(LoginReqDto loginReq)
+        {
+            if (await uow.UserReposetory.UserAlreadyExists(loginReq.Username))
+                return BadRequest("User Alredy Exsits");
+
+            uow.UserReposetory.Register(loginReq.Username, loginReq.Password);
+            await uow.SaveAsync();
+            return StatusCode(200);
+        }
+
+            private string CreateJWT(User user)
         {
             var secretKey = configuration.GetSection("AppSettings:Key").Value;
             var key = new SymmetricSecurityKey(Encoding.UTF8
